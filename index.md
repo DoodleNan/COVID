@@ -36,7 +36,7 @@ comments: true
     frameborder="0"></iframe>
 </div>
 <div id="died" style="width:30px; float:left;">
-<iframe src="./subpage_died_ luxembourg.html"
+<iframe src="./subpage_died_luxembourg.html"
     sandbox="allow-same-origin allow-scripts"
     scrolling="no"
     height="25px"
