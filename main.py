@@ -69,6 +69,7 @@ if __name__ == '__main__':
     pattern3 = re.compile(r'China')
     pattern4 = re.compile(r'Switzerland')
     pattern5 = re.compile(r'[A-Za-z]+ [0-9]{2}, [0-9]{4}')
+    exec(open('make_plot.py').read())
 
     while(True):
         # Access page
