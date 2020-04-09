@@ -3,7 +3,7 @@ import os
 import time
 import re
 from bs4 import BeautifulSoup
-from datetime import datetime
+import datetime
 import requests
 
 # target = 'https://www.gouvernement.lu/coronavirus'
@@ -69,14 +69,14 @@ if __name__ == '__main__':
     pattern3 = re.compile(r'China')
     pattern4 = re.compile(r'Switzerland')
     pattern5 = re.compile(r'[A-Za-z]+ [0-9]{2}, [0-9]{4}')
-    exec(open('make_plot.py').read())
 
+    exec(open('make_plot.py').read())
     while(True):
         # Access page
         response = requests.get(target, auth=('user', 'pass'))
         soup = BeautifulSoup(response.text, "html.parser")
         datetimeStr = re.search(pattern5, str(soup)).group()
-        datetimeObject = datetime.strptime(datetimeStr, '%B %d, %Y')
+        datetimeObject = datetime.datetime.strptime(datetimeStr, '%B %d, %Y')
         current_date = str(datetimeObject.strftime('%Y-%m-%d').split('-')[0]) + str(datetimeObject.strftime('%Y-%m-%d').split('-')[1]) + str(datetimeObject.strftime('%Y-%m-%d').split('-')[2])
 
         myTable = "\"" + str(soup.find("table", {"id": "main_table_countries_today"})) + "\""
@@ -113,7 +113,7 @@ if __name__ == '__main__':
         lastline = csv_read_lastline("case_confirmed_luxembourg.csv")
         if lastline[0] != current_date:
             print('Add new confirmed data ' + luxembourgTotal +
-                  ' @' + str(datetime.now()))
+                  ' @' + str(datetime.datetime.now()))
             if_changed = True
             if_date_remain = False
             last_confirmed = lastline[1]
@@ -121,7 +121,7 @@ if __name__ == '__main__':
             csv_write_lastline("case_confirmed_luxembourg.csv", current_date, luxembourgTotal)
         elif lastline[1] != luxembourgTotal:
             print('Modified confirmed data from ' +
-                  lastline[1] + ' to ' + luxembourgTotal + ' @' + str(datetime.now()))
+                  lastline[1] + ' to ' + luxembourgTotal + ' @' + str(datetime.datetime.now()))
             if_changed = True
             last_confirmed = lastline[1]
             change_file('subpage_confirmed_luxembourg.html', luxembourgTotal)
@@ -131,14 +131,14 @@ if __name__ == '__main__':
         lastline = csv_read_lastline("case_died_luxembourg.csv")
         if lastline[0] != current_date:
             print('Add new died data ' + str(luxembourgDeath) +
-                  ' @' + str(datetime.now()))
+                  ' @' + str(datetime.datetime.now()))
             if_changed = True
             if_date_remain = False
             change_file('subpage_died_luxembourg.html', luxembourgDeath)
             csv_write_lastline("case_died_luxembourg.csv", current_date, luxembourgDeath)
         elif lastline[1] != luxembourgDeath:
             print('Modified died data from ' +
-                  lastline[1] + ' to ' + luxembourgDeath + ' @' + str(datetime.now()))
+                  lastline[1] + ' to ' + luxembourgDeath + ' @' + str(datetime.datetime.now()))
             if_changed = True
             change_file('subpage_died_luxembourg.html', luxembourgDeath)
             csv_change_lastline("case_died_luxembourg.csv", current_date, luxembourgDeath)
@@ -147,14 +147,14 @@ if __name__ == '__main__':
         lastline = csv_read_lastline("case_recovered_luxembourg.csv")
         if lastline[0] != current_date:
             print('Add new recovered data ' + luxembourgRecover +
-                  ' @' + str(datetime.now()))
+                  ' @' + str(datetime.datetime.now()))
             if_changed = True
             if_date_remain = False
             change_file('subpage_recovered_luxembourg.html', luxembourgRecover)
             csv_write_lastline("case_recovered_luxembourg.csv", current_date, luxembourgRecover)
         elif lastline[1] != luxembourgRecover:
             print('Modified recovered data from ' +
-                  lastline[1] + ' to ' + luxembourgRecover + ' @' + str(datetime.now()))
+                  lastline[1] + ' to ' + luxembourgRecover + ' @' + str(datetime.datetime.now()))
             if_changed = True
             change_file('subpage_recovered_luxembourg.html', luxembourgRecover)
             csv_change_lastline("case_recovered_luxembourg.csv", current_date, luxembourgRecover)
@@ -176,22 +176,22 @@ if __name__ == '__main__':
                 table_file.write(new_table_line)
 
             print('===\nRebuild table')
-            # os.system('git pull')
+            os.system('git pull')
             # os.system('markdown table.md > table.html')
-            # os.system('git add .')
-            # commit_msg = 'git commit -m "Table @' + str(datetime.datetime.now()) + '"'
-            # os.system(commit_msg)
-            # os.system('git push')
+            os.system('git add .')
+            commit_msg = 'git commit -m "Table @' + str(datetime.datetime.now()) + '"'
+            os.system(commit_msg)
+            os.system('git push')
 
             print('===\nRebuild Plot')
-            # os.system('git pull')
+            os.system('git pull')
             exec(open('make_plot.py').read())
             print('Push to github')
-            # os.system('git add .')
-            # commit_msg = 'git commit -m "Plot @' + str(datetime.datetime.now()) + '"'
-            # os.system(commit_msg)
-            # os.system('git push')
+            os.system('git add .')
+            commit_msg = 'git commit -m "Plot @' + str(datetime.datetime.now()) + '"'
+            os.system(commit_msg)
+            os.system('git push')
             if_changed = False
 
-        print('Checked at ' + str(datetime.now()))
-        time.sleep(60)
+        print('Checked at ' + str(datetime.datetime.now()))
+        time.sleep(300)
