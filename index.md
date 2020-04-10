@@ -35,7 +35,7 @@ comments: true
     seamless="seamless"
     frameborder="0"></iframe>
 </div>
-<div id="died" style="width:30px; float:left;">
+<div id="died" style="width: 70px; float:left;">
 <iframe src="./subpage_died_luxembourg.html"
     sandbox="allow-same-origin allow-scripts"
     scrolling="no"
