@@ -18,6 +18,8 @@ comments: true
     seamless="seamless"
     frameborder="0"></iframe>
 </div>
+<br>
+
 <div id="resume"  style="width:100%; height:25px; overflow:hidden; text-align:center;">
 <div id="confirmed"  style="width: 120px; float:left;">
 <iframe src="./subpage_confirmed_luxembourg.html"
@@ -27,6 +29,7 @@ comments: true
     seamless="seamless"
     frameborder="0"></iframe>
 </div>
+<br>
 <div id="recovered" style="width: 94px; float:left;">
 <iframe src="./subpage_recovered_luxembourg.html"
     sandbox="allow-same-origin allow-scripts"
@@ -35,7 +38,8 @@ comments: true
     seamless="seamless"
     frameborder="0"></iframe>
 </div>
-<div id="died" style="width: 120px; float:left;">
+<br>
+<div id="died" style="width:30px; float:left;">
 <iframe src="./subpage_died_luxembourg.html"
     sandbox="allow-same-origin allow-scripts"
     scrolling="no"
@@ -45,6 +49,7 @@ comments: true
 </div>
 </div>
 
+<br>
 <iframe src="./plot.html"
     sandbox="allow-same-origin allow-scripts"
     height="365px"

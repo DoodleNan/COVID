@@ -194,4 +194,4 @@ if __name__ == '__main__':
             if_changed = False
 
         print('Checked at ' + str(datetime.datetime.now()))
-        time.sleep(300)
+        time.sleep(30)
